@@ -1,4 +1,4 @@
-# 🐾 Teacher's Pet
+#  Teacher's Pet
 
 > **Autonomous Multi-Agent Pedagogical Colleague for Public School Teachers**  
 > Tailored specifically for educators in public schools managing overcrowded classes (40+ learners) with limited resources. Autonomously drafts structured lesson plans, builds differentiated matching exercises, and certifies every item against official curriculum learning outcomes with **zero hallucinations or unverified sources**.
@@ -24,19 +24,6 @@
 
 ---
 
-##  The 6-Stage Autonomous Lifecycle
-
-```mermaid
-flowchart LR
-    G["01 Goal\n(Educator)"] --> P["02 Plan\n(Planner PL)"]
-    P --> A["03 Act\n(Workers WK)"]
-    A --> C["04 Check\n(Reviewer RV)"]
-    C -->|Flagged Issues| CR["05 Correct\n(Self-Correction Loop)"]
-    CR -->|Re-Audit| C
-    C -->|Approved (100%)| D["06 Deliver\n(Classroom Ready)"]
-```
-
----
 
 ##  Anti-Hallucination & Zero-Unverified-Sources Guarantee
 
