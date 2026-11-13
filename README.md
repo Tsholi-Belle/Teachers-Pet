@@ -73,11 +73,8 @@ Explore the complete pitch deck detailing the problem statement, solution, and w
 ##  Quickstart Guide
 
 ### 1. Web Dashboard (Interactive UI)
-Run the local server:
-```bash
-python3 app.py 8080
-```
-Open your browser to: **`http://localhost:8080`**
+
+Open your browser to: **`(https://teachers-pet-production-0f02b09c.up.railway.app)`**
 
 ### 2. Command Line Interface (CLI)
 Run directly from terminal:
