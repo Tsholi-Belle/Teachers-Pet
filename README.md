@@ -1,4 +1,4 @@
-# 🐾 Teacher's Pet
+#  Teacher's Pet
 
 > **Autonomous Multi-Agent Pedagogical Colleague for Public School Teachers**  
 > Tailored specifically for educators in public schools managing overcrowded classes (40+ learners) with limited resources. Autonomously drafts structured lesson plans, builds differentiated matching exercises, and certifies every item against official curriculum learning outcomes with **zero hallucinations or unverified sources**.
