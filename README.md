@@ -1,6 +1,6 @@
 #  Teacher's Pet
 
-> **Autonomous Multi-Agent Colleague for Public School Teachers**  
+> **Autonomous Multi-Agent Colleague for School Teachers**  
 > Tailored specifically for educators in public schools managing overcrowded classes (40+ learners) with limited resources. Autonomously drafts structured lesson plans, builds differentiated matching exercises, and certifies every item against official curriculum learning outcomes with **zero hallucinations or unverified sources**.
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Tsholi--Belle%2FTeachers--Pet-blue?logo=github)](https://github.com/Tsholi-Belle/Teachers-Pet)
