@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const forceCorrection = demoCorrectionToggle.checked;
     resetWorkflowUI();
     launchBtn.disabled = true;
-    launchBtn.innerHTML = `<span>⏳</span> Agents Collaborating...`;
+    launchBtn.innerHTML = `Agents Collaborating...`;
 
     try {
       const response = await fetch("/api/run", {
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Execution failed:", err);
       appendLog("System", "SYS", "Execution Error", `Failed: ${err.message}`, "error");
       launchBtn.disabled = false;
-      launchBtn.innerHTML = `<span>⚡</span> Run Teacher's Pet`;
+      launchBtn.innerHTML = `Run Teacher's Pet`;
     }
   });
 
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (index >= events.length) {
         clearInterval(interval);
         launchBtn.disabled = false;
-        launchBtn.innerHTML = `<span>⚡</span> Run Teacher's Pet`;
+        launchBtn.innerHTML = `Run Teacher's Pet`;
         renderDeliveryBundle(bundle);
         return;
       }
@@ -214,21 +214,21 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="callout-box">
-          <strong>🏫 Public School Classroom Adaptation (40+ Kids):</strong><br>
+          <strong>Public School Classroom Adaptation (40+ Kids):</strong><br>
           • <strong>Seating:</strong> ${escapeHtml(plan.classroom_logistics.seating_arrangement)}<br>
           • <strong>Attention Cue:</strong> ${escapeHtml(plan.classroom_logistics.noise_and_attention_cues)}<br>
           • <strong>Rapid Feedback:</strong> ${escapeHtml(plan.classroom_logistics.rapid_formative_checks_for_large_group)}
         </div>
 
         <div class="section-block">
-          <h4>🎯 Verified Learning Outcomes</h4>
+          <h4>Verified Learning Outcomes</h4>
           <ul class="outcomes-list">
             ${plan.learning_outcomes.map(o => `<li>${escapeHtml(o)}</li>`).join("")}
           </ul>
         </div>
 
         <div class="section-block">
-          <h4>⏱️ Large-Class Instructional Timeline</h4>
+          <h4>Large-Class Instructional Timeline</h4>
           <table class="timeline-table">
             <thead>
               <tr><th>Phase</th><th>Timing</th><th>Classroom Actions</th></tr>
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="section-block">
-          <h4>📝 3-Panel Chalkboard Layout (Zero-Cost Public School Strategy)</h4>
+          <h4>3-Panel Chalkboard Layout (Zero-Cost Public School Strategy)</h4>
           <div class="board-preview-grid">
             <div class="board-col">
               <h5>PANEL 1 (LEFT)</h5>
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="section-block">
-          <h4>⚖️ Differentiation for Diverse Pacing</h4>
+          <h4>Differentiation for Diverse Pacing</h4>
           <p style="font-size: 0.85rem; color: #cbd5e1;">
             • <strong>Struggling Learners:</strong> ${escapeHtml(plan.differentiation.struggling_learners)}<br>
             • <strong>Fast Finishers:</strong> ${escapeHtml(plan.differentiation.fast_finishers)}
@@ -287,8 +287,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="panel-sub">Student Activity Sheet • High-Density Paper-Saver Format</p>
 
         <div class="callout-box" style="border-left-color: #ec4899; background: rgba(236, 72, 153, 0.08);">
-          <strong>📄 School Budget Note:</strong> ${escapeHtml(exercise.paper_saver_guidance)}<br>
-          <strong>👥 Peer Checking:</strong> ${escapeHtml(exercise.peer_marking_protocol)}
+          <strong>School Budget Note:</strong> ${escapeHtml(exercise.paper_saver_guidance)}<br>
+          <strong>Peer Checking:</strong> ${escapeHtml(exercise.peer_marking_protocol)}
         </div>
 
         <div class="matching-container">
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="callout-box" style="border-left-color: #10b981; background: rgba(16, 185, 129, 0.08);">
-          <strong>🎯 Rapid Class-wide Choral Correction:</strong><br>
+          <strong>Rapid Class-wide Choral Correction:</strong><br>
           Teacher calls out: <em>"Number 1: Chlorophyll is..."</em> ➔ Whole class responds in unison: <em>"Letter ${exercise.column_a[0].correct_letter}!"</em>. Corrects 45 students in under 90 seconds without marking backlogs.
         </div>
       </div>
@@ -357,28 +357,28 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="section-block">
           <h4>Audit Checkpoints</h4>
           <div class="check-item">
-            <span class="icon">${checks.curriculum_grounding ? "✅" : "❌"}</span>
+            <span class="pacing-badge ${checks.curriculum_grounding ? 'on-track' : 'critical'}">${checks.curriculum_grounding ? "PASS" : "FAIL"}</span>
             <div>
               <strong>Official Curriculum Standard Code:</strong>
               <span style="color: #94a3b8">Anchored to authorized standard <code>${escapeHtml(plan.standard_code)}</code></span>
             </div>
           </div>
           <div class="check-item">
-            <span class="icon">${checks.source_verification ? "✅" : "❌"}</span>
+            <span class="pacing-badge ${checks.source_verification ? 'on-track' : 'critical'}">${checks.source_verification ? "PASS" : "FAIL"}</span>
             <div>
               <strong>Strict Source Whitelist:</strong>
               <span style="color: #94a3b8">Zero unverified links or blogs. Citing: <em>${plan.verified_sources.join(", ")}</em></span>
             </div>
           </div>
           <div class="check-item">
-            <span class="icon">${checks.crowded_class_40plus ? "✅" : "❌"}</span>
+            <span class="pacing-badge ${checks.crowded_class_40plus ? 'on-track' : 'critical'}">${checks.crowded_class_40plus ? "PASS" : "FAIL"}</span>
             <div>
               <strong>40+ Learner Public School Feasibility:</strong>
               <span style="color: #94a3b8">Enforces zero-cost supplies, pair-work, chalkboard layouts, and paper-saving formats.</span>
             </div>
           </div>
           <div class="check-item">
-            <span class="icon">${checks.exercise_integrity ? "✅" : "❌"}</span>
+            <span class="pacing-badge ${checks.exercise_integrity ? 'on-track' : 'critical'}">${checks.exercise_integrity ? "PASS" : "FAIL"}</span>
             <div>
               <strong>Exercise Structural Integrity:</strong>
               <span style="color: #94a3b8">Checked for zero duplicates, 1-to-1 unambiguous matching keys, and outcome alignment.</span>
@@ -638,13 +638,13 @@ document.addEventListener("DOMContentLoaded", () => {
             ${(item.objectives || []).map(o => `<div>• ${escapeHtml(o)}</div>`).join("")}
           </div>
           <div class="obj-hours-tag">
-            ⏱️ ${item.hours_allocated || 3.5}h
+            ${item.hours_allocated || 3.5}h
           </div>
           <div class="obj-actions-col">
             <button class="btn-draft-lesson" data-topic="${escapeHtml(item.topic)}" data-objs="${escapeHtml((item.objectives || []).join('; '))}">
-              <span>⚡</span> Draft Lesson
+              Draft Lesson
             </button>
-            ${isCompleted && item.date_completed ? `<span class="obj-completed-date">✓ Done ${item.date_completed}</span>` : ''}
+            ${isCompleted && item.date_completed ? `<span class="obj-completed-date">Done: ${item.date_completed}</span>` : ''}
           </div>
         </div>
       `;
@@ -722,30 +722,33 @@ document.addEventListener("DOMContentLoaded", () => {
       badge.className = "pacing-health-badge";
       if (rep.health_status === "ON_TRACK") {
         badge.classList.add("badge-on-track");
-        badge.querySelector(".badge-icon").textContent = "✅";
+        const iconSpan = badge.querySelector(".badge-icon");
+        if (iconSpan) iconSpan.textContent = "";
         badgeText.textContent = "On Track & Pacing Well";
         deltaText.textContent = `${rep.pacing_delta_weeks >= 0 ? '+' : ''}${rep.pacing_delta_weeks} weeks ahead of expected ATP`;
         if (trackerNavBadge) {
           trackerNavBadge.className = "pacing-badge on-track";
-          trackerNavBadge.textContent = `${rep.term} • On Track ✅`;
+          trackerNavBadge.textContent = `${rep.term} • On Track`;
         }
       } else if (rep.health_status === "SLIGHT_DELAY") {
         badge.classList.add("badge-slight-delay");
-        badge.querySelector(".badge-icon").textContent = "⚠️";
+        const iconSpan = badge.querySelector(".badge-icon");
+        if (iconSpan) iconSpan.textContent = "";
         badgeText.textContent = "1 Week Behind Schedule";
         deltaText.textContent = "1 week behind expected Department scope";
         if (trackerNavBadge) {
           trackerNavBadge.className = "pacing-badge delayed";
-          trackerNavBadge.textContent = `${rep.term} • 1 Wk Behind ⚠️`;
+          trackerNavBadge.textContent = `${rep.term} • 1 Wk Behind`;
         }
       } else {
         badge.classList.add("badge-critical-lag");
-        badge.querySelector(".badge-icon").textContent = "🚨";
+        const iconSpan = badge.querySelector(".badge-icon");
+        if (iconSpan) iconSpan.textContent = "";
         badgeText.textContent = `${Math.abs(rep.pacing_delta_weeks)} Weeks Behind Schedule`;
         deltaText.textContent = `Critical lag: ${Math.abs(rep.pacing_delta_weeks)} weeks behind Department ATP`;
         if (trackerNavBadge) {
           trackerNavBadge.className = "pacing-badge critical";
-          trackerNavBadge.textContent = `${rep.term} • ${Math.abs(rep.pacing_delta_weeks)} Wks Behind 🚨`;
+          trackerNavBadge.textContent = `${rep.term} • ${Math.abs(rep.pacing_delta_weeks)} Wks Behind`;
         }
       }
     }
