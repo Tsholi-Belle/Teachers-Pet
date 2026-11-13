@@ -56,6 +56,25 @@ Public school teachers face official departmental audits. Fictitious citations o
 
 ---
 
+## 📅 Annual Scope Uploader & Curriculum Accountability Tracker
+
+Public school educators face relentless pressure from departmental audits to complete the syllabus on time despite classroom disruptions, sports days, and high student counts. **Teacher's Pet** integrates an end-to-end Curriculum Scope & Accountability Tracker:
+
+- **Year Scope & Objectives Uploader**:
+  - Upload custom school Annual Teaching Plans (ATPs) via **JSON, CSV, or plain text**.
+  - One-click Department Presets: Pre-loaded with official **CAPS Grade 7 Natural Sciences ATP (2026)** and **CAPS Grade 8 Mathematics ATP (2026)**.
+- **Term-by-Term Objectives Matrix**:
+  - Full breakdown across **Term 1, Term 2, Term 3, and Term 4** with weekly pacing targets, expected outcomes, and allocated hours.
+  - Interactive completion checkboxes with automatic completion date stamping.
+- **Real-Time Pacing & Accountability Engine**:
+  - Dynamically calculates syllabus coverage vs. current school calendar week.
+  - Pacing Health Badges: **On Track ✅**, **1 Week Behind ⚠️**, or **Critical Lag 🚨**.
+  - **Planner Agent (`PL`) Catch-Up Advisories**: When a teacher falls behind schedule, the Planner Agent provides automated consolidation strategies to catch up without sacrificing core learning outcomes.
+- **Seamless Lesson Generator Linkage**:
+  - Click **"⚡ Draft Lesson"** on any weekly objective in the scope to instantly transfer the exact topic and outcomes into the lesson generator and auto-advance your tracking.
+
+---
+
 ## 📊 Pitch Deck & Product Vision
 
 Explore the complete pitch deck detailing the problem statement, solution, and why teachers need this agent:
@@ -89,6 +108,7 @@ python3 cli.py --export-md sample_lesson.md
 ### 3. Run Automated Tests
 ```bash
 python3 tests/test_agents.py
+python3 tests/test_tracker.py
 ```
 
 ---

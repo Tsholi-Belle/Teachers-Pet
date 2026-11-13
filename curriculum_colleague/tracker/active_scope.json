@@ -1,0 +1,58 @@
+{
+  "id": "custom_upload_1794574268",
+  "title": "Teacher Uploaded Annual Curriculum Scope",
+  "authority": "Teacher Custom Upload",
+  "grade": "Uploaded Grade",
+  "subject": "Uploaded Subject",
+  "academic_year": "2026",
+  "terms": {
+    "Term 1": {
+      "name": "Curriculum Scope Term 1",
+      "weeks_count": 2,
+      "weeks": [
+        {
+          "week": 1,
+          "id": "term_1_w1",
+          "topic": "Fractions Introduction",
+          "objectives": [
+            "Identify numerator and denominator"
+          ],
+          "hours_allocated": 4.5,
+          "completed": true,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 2,
+          "id": "term_1_w2",
+          "topic": "Equivalent Fractions",
+          "objectives": [
+            "Simplify fractions using LCD"
+          ],
+          "hours_allocated": 4.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        }
+      ]
+    },
+    "Term 2": {
+      "name": "Curriculum Scope Term 2",
+      "weeks_count": 1,
+      "weeks": [
+        {
+          "week": 1,
+          "id": "term_2_w1",
+          "topic": "Geometry of 2D Shapes",
+          "objectives": [
+            "Classify triangles by sides and angles"
+          ],
+          "hours_allocated": 4.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        }
+      ]
+    }
+  }
+}

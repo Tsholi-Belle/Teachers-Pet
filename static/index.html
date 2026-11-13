@@ -26,10 +26,23 @@
           </div>
         </div>
       </div>
+
+      <!-- Top Primary View Navigation -->
+      <nav class="top-nav">
+        <button class="nav-pill-btn active" data-view="generator-view">
+          <span>⚡</span> Lesson & Exercise Generator
+        </button>
+        <button class="nav-pill-btn" data-view="tracker-view">
+          <span>📅</span> Annual Scope & Accountability Tracker
+          <span id="trackerNavBadge" class="pacing-badge on-track">Term 1 • On Track</span>
+        </button>
+      </nav>
     </header>
 
-    <!-- Main Workspace Area -->
-    <main class="main-layout">
+    <!-- VIEW 1: Lesson & Exercise Generator -->
+    <div id="generator-view" class="app-view active">
+      <!-- Main Workspace Area -->
+      <main class="main-layout">
       <!-- Left Column: Goal Input & Live Multi-Agent Log -->
       <div class="input-and-logs-col">
         <div class="card panel">
@@ -135,6 +148,132 @@
         </div>
       </div>
     </main>
+    </div> <!-- /generator-view -->
+
+    <!-- VIEW 2: Annual Scope & Accountability Tracker -->
+    <div id="tracker-view" class="app-view" style="display: none;">
+      <div class="tracker-container">
+        <!-- Tracker Top Control Bar -->
+        <div class="card panel tracker-header-panel">
+          <div class="tracker-header-content">
+            <div>
+              <h2>Annual Curriculum Scope & Pacing Accountability</h2>
+              <p class="panel-sub" id="scopeTitleDisplay">Loaded: CAPS Natural Sciences Grade 7 Annual Teaching Plan (2026)</p>
+            </div>
+            <div class="tracker-header-actions">
+              <button id="toggleUploadBtn" class="btn btn-secondary">
+                <span>📤</span> Upload Year Scope (JSON/CSV)
+              </button>
+              <div class="preset-dropdown-wrap">
+                <select id="presetScopeSelect" class="form-select">
+                  <option value="caps_ns_g7">🇿🇦 CAPS Gr 7 Natural Sciences (ATP 2026)</option>
+                  <option value="caps_math_g8">🇿🇦 CAPS Gr 8 Mathematics (ATP 2026)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hidden Upload Drawer -->
+          <div id="uploadDrawer" class="upload-drawer" style="display: none;">
+            <h4>Upload Custom Annual Scope & Expected Objectives</h4>
+            <p class="helper-text">Upload a JSON or CSV file containing your school's Annual Teaching Plan, or paste structured text (e.g. <em>Week 1: Biosphere</em>).</p>
+            <div class="upload-dropzone" id="dropZone">
+              <input type="file" id="scopeFileInput" accept=".json,.csv,.txt" style="display: none;">
+              <span class="upload-icon">📁</span>
+              <p>Drag & drop your Scope file here, or <button type="button" class="btn-inline" id="browseFileBtn">browse file</button></p>
+              <span class="upload-subtext">Supports JSON, CSV, and plain text ATPs</span>
+            </div>
+            <div class="paste-wrap" style="margin-top: 12px;">
+              <textarea id="scopePasteInput" rows="3" placeholder="Or paste your term weeks here (e.g. Week 1: Introduction to Fractions; Week 2: Equivalent Fractions...)"></textarea>
+              <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 8px;">
+                <button id="cancelUploadBtn" class="btn btn-secondary btn-sm">Cancel</button>
+                <button id="submitScopeUploadBtn" class="btn btn-primary btn-sm">Parse & Load Scope</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accountability Pacing Dashboard Banner -->
+        <div class="card panel accountability-banner">
+          <div class="accountability-grid">
+            <!-- Left: Current Week Selector & Target -->
+            <div class="accountability-col">
+              <span class="meta-label">School Calendar Pacing</span>
+              <div class="week-picker-row">
+                <label for="currentWeekSelect">Current School Week:</label>
+                <select id="currentWeekSelect" class="form-select week-select">
+                  <option value="1">Week 1</option>
+                  <option value="2">Week 2</option>
+                  <option value="3">Week 3</option>
+                  <option value="4" selected>Week 4</option>
+                  <option value="5">Week 5</option>
+                  <option value="6">Week 6</option>
+                  <option value="7">Week 7</option>
+                  <option value="8">Week 8</option>
+                  <option value="9">Week 9</option>
+                  <option value="10">Week 10 (Exam / FAT)</option>
+                </select>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-labels">
+                  <span id="progressPercentLabel">40% Scope Covered</span>
+                  <span id="progressCountLabel">4 of 10 Weeks Completed</span>
+                </div>
+                <div class="progress-track">
+                  <div id="scopeProgressBar" class="progress-fill" style="width: 40%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Middle: Pacing Health Metric -->
+            <div class="accountability-col text-center border-x">
+              <span class="meta-label">Curriculum Accountability Status</span>
+              <div id="pacingHealthBadge" class="pacing-health-badge badge-on-track">
+                <span class="badge-icon">✅</span>
+                <span class="badge-text" id="pacingHealthText">On Track & Pacing Well</span>
+              </div>
+              <div class="pacing-sub" id="pacingDeltaText">0 weeks behind schedule</div>
+            </div>
+
+            <!-- Right: Planner Agent Advisory for Catch-Up -->
+            <div class="accountability-col">
+              <span class="meta-label">🤖 Planner Agent Pacing Advisory</span>
+              <div id="plannerAdvisoryBox" class="advisory-box">
+                You are on schedule with the official curriculum scope! Maintain current pacing and continue formative checks.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Term Navigation Tabs -->
+        <div class="term-tabs-row">
+          <button class="term-tab-btn active" data-term="Term 1">
+            Term 1 <span class="term-progress-pill" id="t1Progress">4/10</span>
+          </button>
+          <button class="term-tab-btn" data-term="Term 2">
+            Term 2 <span class="term-progress-pill" id="t2Progress">0/4</span>
+          </button>
+          <button class="term-tab-btn" data-term="Term 3">
+            Term 3 <span class="term-progress-pill" id="t3Progress">0/2</span>
+          </button>
+          <button class="term-tab-btn" data-term="Term 4">
+            Term 4 <span class="term-progress-pill" id="t4Progress">0/2</span>
+          </button>
+        </div>
+
+        <!-- Weekly Objectives Table -->
+        <div class="card panel objectives-panel">
+          <div class="objectives-header-row">
+            <h3 id="currentTermNameDisplay">Term 1: Life and Living</h3>
+            <span class="helper-text">Check off completed objectives or click "Draft Lesson" to instantly generate materials.</span>
+          </div>
+
+          <div id="objectivesList" class="objectives-list">
+            <!-- Dynamically populated via app.js -->
+          </div>
+        </div>
+      </div>
+    </div> <!-- /tracker-view -->
 
     <!-- Footer -->
     <footer class="footer">

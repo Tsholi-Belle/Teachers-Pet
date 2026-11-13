@@ -21,6 +21,10 @@ if BASE_DIR not in sys.path:
 
 from curriculum_colleague.workflow import CurriculumColleagueWorkflow
 from curriculum_colleague.verification.fact_checker import FactChecker
+from curriculum_colleague.tracker.scope_tracker import ScopeTracker
+
+# Shared tracker instance
+scope_tracker = ScopeTracker()
 
 
 class CurriculumRequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -30,11 +34,20 @@ class CurriculumRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+        query_params = urllib.parse.parse_qs(parsed.query)
+
         if parsed.path == "/api/status":
             self._send_json({"status": "running", "service": "Teacher's Pet", "version": "1.0.0"})
         elif parsed.path == "/api/standards":
             checker = FactChecker()
             self._send_json({"curricula": checker.curricula})
+        elif parsed.path == "/api/scope":
+            self._send_json({"status": "success", "scope": scope_tracker.current_scope})
+        elif parsed.path == "/api/scope/accountability":
+            term = query_params.get("term", ["Term 1"])[0]
+            week = int(query_params.get("week", [5])[0])
+            report = scope_tracker.calculate_accountability(term_name=term, current_week=week)
+            self._send_json({"status": "success", "report": report})
         else:
             # Fallback to static files
             super().do_GET()
@@ -72,6 +85,24 @@ class CurriculumRequestHandler(http.server.SimpleHTTPRequestHandler):
             checker = FactChecker()
             audit = checker.verify_lesson_plan(plan)
             self._send_json({"success": True, "audit": audit})
+
+        elif parsed.path == "/api/scope/upload":
+            raw_content = req_json.get("content", "")
+            file_format = req_json.get("format", "json")
+            result = scope_tracker.upload_scope(raw_content=raw_content, file_format=file_format)
+            self._send_json(result)
+
+        elif parsed.path == "/api/scope/preset":
+            preset_id = req_json.get("preset_id", "caps_ns_g7")
+            scope = scope_tracker.load_preset(preset_id=preset_id)
+            self._send_json({"status": "success", "scope": scope})
+
+        elif parsed.path == "/api/scope/update":
+            obj_id = req_json.get("id", "")
+            completed = req_json.get("completed", False)
+            notes = req_json.get("notes", "")
+            res = scope_tracker.update_objective_status(objective_id=obj_id, completed=completed, notes=notes)
+            self._send_json(res)
 
         else:
             self.send_error(404, "Endpoint not found")

@@ -411,4 +411,350 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
   }
+
+  // =========================================================
+  // Scope & Accountability Tracker Logic
+  // =========================================================
+  let currentActiveTerm = "Term 1";
+  let activeScopeData = null;
+
+  function initScopeTracker() {
+    // 1. View Navigation
+    document.querySelectorAll(".nav-pill-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".nav-pill-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".app-view").forEach(v => v.style.display = "none");
+
+        btn.classList.add("active");
+        const targetView = document.getElementById(btn.dataset.view);
+        if (targetView) targetView.style.display = "block";
+
+        if (btn.dataset.view === "tracker-view") {
+          fetchScopeAndRender();
+        }
+      });
+    });
+
+    // 2. Week Select Listener
+    const currentWeekSelect = document.getElementById("currentWeekSelect");
+    if (currentWeekSelect) {
+      currentWeekSelect.addEventListener("change", () => {
+        updateAccountability(currentActiveTerm, parseInt(currentWeekSelect.value));
+      });
+    }
+
+    // 3. Term Tabs
+    document.querySelectorAll(".term-tab-btn").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".term-tab-btn").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentActiveTerm = tab.dataset.term;
+        renderCurrentTermObjectives();
+        const currentWeek = parseInt(document.getElementById("currentWeekSelect").value || "4");
+        updateAccountability(currentActiveTerm, currentWeek);
+      });
+    });
+
+    // 4. Upload Drawer Controls
+    const toggleUploadBtn = document.getElementById("toggleUploadBtn");
+    const uploadDrawer = document.getElementById("uploadDrawer");
+    const cancelUploadBtn = document.getElementById("cancelUploadBtn");
+    const submitScopeUploadBtn = document.getElementById("submitScopeUploadBtn");
+    const browseFileBtn = document.getElementById("browseFileBtn");
+    const scopeFileInput = document.getElementById("scopeFileInput");
+    const dropZone = document.getElementById("dropZone");
+    const scopePasteInput = document.getElementById("scopePasteInput");
+    const presetScopeSelect = document.getElementById("presetScopeSelect");
+
+    if (toggleUploadBtn && uploadDrawer) {
+      toggleUploadBtn.addEventListener("click", () => {
+        uploadDrawer.style.display = uploadDrawer.style.display === "none" ? "block" : "none";
+      });
+    }
+
+    if (cancelUploadBtn && uploadDrawer) {
+      cancelUploadBtn.addEventListener("click", () => {
+        uploadDrawer.style.display = "none";
+      });
+    }
+
+    if (browseFileBtn && scopeFileInput) {
+      browseFileBtn.addEventListener("click", () => scopeFileInput.click());
+      scopeFileInput.addEventListener("change", handleFileUpload);
+    }
+
+    if (dropZone) {
+      dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("dragover"); });
+      dropZone.addEventListener("dragleave", () => dropZone.classList.remove("dragover"));
+      dropZone.addEventListener("drop", e => {
+        e.preventDefault();
+        dropZone.classList.remove("dragover");
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          readFileAndUpload(e.dataTransfer.files[0]);
+        }
+      });
+    }
+
+    if (submitScopeUploadBtn) {
+      submitScopeUploadBtn.addEventListener("click", async () => {
+        const text = scopePasteInput.value.trim();
+        if (!text) {
+          alert("Please paste scope text or upload a JSON/CSV file.");
+          return;
+        }
+        await uploadScopeContent(text, text.startsWith("{") ? "json" : "text");
+        uploadDrawer.style.display = "none";
+        scopePasteInput.value = "";
+      });
+    }
+
+    if (presetScopeSelect) {
+      presetScopeSelect.addEventListener("change", async () => {
+        const presetId = presetScopeSelect.value;
+        try {
+          const res = await fetch("/api/scope/preset", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ preset_id: presetId })
+          });
+          const data = await res.json();
+          if (data.status === "success") {
+            activeScopeData = data.scope;
+            updateScopeUI();
+          }
+        } catch (err) {
+          console.error("Failed to load preset:", err);
+        }
+      });
+    }
+
+    // Initial load
+    fetchScopeAndRender();
+  }
+
+  function handleFileUpload(e) {
+    if (e.target.files && e.target.files[0]) {
+      readFileAndUpload(e.target.files[0]);
+    }
+  }
+
+  function readFileAndUpload(file) {
+    const reader = new FileReader();
+    const format = file.name.endsWith(".json") ? "json" : file.name.endsWith(".csv") ? "csv" : "text";
+    reader.onload = async event => {
+      const content = event.target.result;
+      await uploadScopeContent(content, format);
+      const uploadDrawer = document.getElementById("uploadDrawer");
+      if (uploadDrawer) uploadDrawer.style.display = "none";
+    };
+    reader.readAsText(file);
+  }
+
+  async function uploadScopeContent(content, format) {
+    try {
+      const res = await fetch("/api/scope/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content, format })
+      });
+      const data = await res.json();
+      if (data.status === "success") {
+        alert("Curriculum Scope loaded successfully!");
+        activeScopeData = data.scope;
+        updateScopeUI();
+      } else {
+        alert("Upload error: " + data.message);
+      }
+    } catch (err) {
+      alert("Failed to upload scope: " + err.message);
+    }
+  }
+
+  async function fetchScopeAndRender() {
+    try {
+      const res = await fetch("/api/scope");
+      const data = await res.json();
+      if (data.status === "success") {
+        activeScopeData = data.scope;
+        updateScopeUI();
+      }
+    } catch (err) {
+      console.error("Error fetching scope:", err);
+    }
+  }
+
+  function updateScopeUI() {
+    if (!activeScopeData) return;
+    const titleDisplay = document.getElementById("scopeTitleDisplay");
+    if (titleDisplay) {
+      titleDisplay.textContent = `Loaded: ${activeScopeData.title || "Annual Teaching Plan"} (${activeScopeData.academic_year || "2026"})`;
+    }
+
+    // Update term progress pills
+    const terms = activeScopeData.terms || {};
+    ["Term 1", "Term 2", "Term 3", "Term 4"].forEach((tName, i) => {
+      const pill = document.getElementById(`t${i+1}Progress`);
+      if (pill && terms[tName]) {
+        const weeks = terms[tName].weeks || [];
+        const completed = weeks.filter(w => w.completed).length;
+        pill.textContent = `${completed}/${weeks.length}`;
+      }
+    });
+
+    renderCurrentTermObjectives();
+    const currentWeek = parseInt(document.getElementById("currentWeekSelect").value || "4");
+    updateAccountability(currentActiveTerm, currentWeek);
+  }
+
+  function renderCurrentTermObjectives() {
+    if (!activeScopeData) return;
+    const termData = (activeScopeData.terms || {})[currentActiveTerm];
+    const nameDisplay = document.getElementById("currentTermNameDisplay");
+    const container = document.getElementById("objectivesList");
+    if (!container) return;
+
+    if (!termData) {
+      container.innerHTML = `<p class="helper-text">No objectives found for ${currentActiveTerm}.</p>`;
+      return;
+    }
+
+    if (nameDisplay) {
+      nameDisplay.textContent = `${currentActiveTerm}: ${termData.name || "Curriculum Focus"}`;
+    }
+
+    const weeks = termData.weeks || [];
+    container.innerHTML = weeks.map(item => {
+      const isCompleted = item.completed;
+      return `
+        <div class="objective-item-card ${isCompleted ? 'completed' : ''}" id="obj-row-${item.id}">
+          <div>
+            <input type="checkbox" class="objective-checkbox" data-id="${item.id}" ${isCompleted ? 'checked' : ''}>
+          </div>
+          <div class="obj-week-col">
+            <span class="obj-week-num">Week ${item.week}</span>
+            <span class="obj-topic-name">${escapeHtml(item.topic)}</span>
+          </div>
+          <div class="obj-bullets">
+            ${(item.objectives || []).map(o => `<div>• ${escapeHtml(o)}</div>`).join("")}
+          </div>
+          <div class="obj-hours-tag">
+            ⏱️ ${item.hours_allocated || 3.5}h
+          </div>
+          <div class="obj-actions-col">
+            <button class="btn-draft-lesson" data-topic="${escapeHtml(item.topic)}" data-objs="${escapeHtml((item.objectives || []).join('; '))}">
+              <span>⚡</span> Draft Lesson
+            </button>
+            ${isCompleted && item.date_completed ? `<span class="obj-completed-date">✓ Done ${item.date_completed}</span>` : ''}
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    // Attach checkbox listeners
+    container.querySelectorAll(".objective-checkbox").forEach(box => {
+      box.addEventListener("change", async () => {
+        const objId = box.dataset.id;
+        const checked = box.checked;
+        await toggleObjectiveStatus(objId, checked);
+      });
+    });
+
+    // Attach Draft Lesson shortcut listeners
+    container.querySelectorAll(".btn-draft-lesson").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const topic = btn.dataset.topic;
+        const objs = btn.dataset.objs;
+        const goalStr = `${activeScopeData.grade || 'Grade 7'} ${activeScopeData.subject || 'Natural Sciences'}: ${topic} (${objs}) for 45 students in public school`;
+
+        // Transfer to Generator View
+        document.querySelector('.nav-pill-btn[data-view="generator-view"]').click();
+        goalInput.value = goalStr;
+        goalInput.scrollIntoView({ behavior: 'smooth' });
+        goalInput.focus();
+      });
+    });
+  }
+
+  async function toggleObjectiveStatus(objId, completed) {
+    try {
+      const res = await fetch("/api/scope/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: objId, completed: completed })
+      });
+      const data = await res.json();
+      if (data.status === "success") {
+        fetchScopeAndRender();
+      }
+    } catch (err) {
+      console.error("Failed to update status:", err);
+    }
+  }
+
+  async function updateAccountability(termName, currentWeek) {
+    try {
+      const res = await fetch(`/api/scope/accountability?term=${encodeURIComponent(termName)}&week=${currentWeek}`);
+      const data = await res.json();
+      if (data.status === "success") {
+        const rep = data.report;
+        renderAccountabilityReport(rep);
+      }
+    } catch (err) {
+      console.error("Failed to fetch accountability report:", err);
+    }
+  }
+
+  function renderAccountabilityReport(rep) {
+    const badge = document.getElementById("pacingHealthBadge");
+    const badgeText = document.getElementById("pacingHealthText");
+    const deltaText = document.getElementById("pacingDeltaText");
+    const advisoryBox = document.getElementById("plannerAdvisoryBox");
+    const progressBar = document.getElementById("scopeProgressBar");
+    const progressPercentLabel = document.getElementById("progressPercentLabel");
+    const progressCountLabel = document.getElementById("progressCountLabel");
+    const trackerNavBadge = document.getElementById("trackerNavBadge");
+
+    if (progressBar) progressBar.style.width = `${rep.completion_percentage}%`;
+    if (progressPercentLabel) progressPercentLabel.textContent = `${rep.completion_percentage}% Scope Covered`;
+    if (progressCountLabel) progressCountLabel.textContent = `${rep.completed_count} of ${rep.total_weeks} Weeks Completed`;
+
+    if (badge && badgeText && deltaText) {
+      badge.className = "pacing-health-badge";
+      if (rep.health_status === "ON_TRACK") {
+        badge.classList.add("badge-on-track");
+        badge.querySelector(".badge-icon").textContent = "✅";
+        badgeText.textContent = "On Track & Pacing Well";
+        deltaText.textContent = `${rep.pacing_delta_weeks >= 0 ? '+' : ''}${rep.pacing_delta_weeks} weeks ahead of expected ATP`;
+        if (trackerNavBadge) {
+          trackerNavBadge.className = "pacing-badge on-track";
+          trackerNavBadge.textContent = `${rep.term} • On Track ✅`;
+        }
+      } else if (rep.health_status === "SLIGHT_DELAY") {
+        badge.classList.add("badge-slight-delay");
+        badge.querySelector(".badge-icon").textContent = "⚠️";
+        badgeText.textContent = "1 Week Behind Schedule";
+        deltaText.textContent = "1 week behind expected Department scope";
+        if (trackerNavBadge) {
+          trackerNavBadge.className = "pacing-badge delayed";
+          trackerNavBadge.textContent = `${rep.term} • 1 Wk Behind ⚠️`;
+        }
+      } else {
+        badge.classList.add("badge-critical-lag");
+        badge.querySelector(".badge-icon").textContent = "🚨";
+        badgeText.textContent = `${Math.abs(rep.pacing_delta_weeks)} Weeks Behind Schedule`;
+        deltaText.textContent = `Critical lag: ${Math.abs(rep.pacing_delta_weeks)} weeks behind Department ATP`;
+        if (trackerNavBadge) {
+          trackerNavBadge.className = "pacing-badge critical";
+          trackerNavBadge.textContent = `${rep.term} • ${Math.abs(rep.pacing_delta_weeks)} Wks Behind 🚨`;
+        }
+      }
+    }
+
+    if (advisoryBox) {
+      advisoryBox.textContent = rep.planner_advisory;
+    }
+  }
+
+  // Initialize Scope Tracker
+  initScopeTracker();
 });
