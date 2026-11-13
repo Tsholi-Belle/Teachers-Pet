@@ -24,19 +24,6 @@
 
 ---
 
-##  The 6-Stage Autonomous Lifecycle
-
-```mermaid
-flowchart LR
-    G["01 Goal\n(Educator)"] --> P["02 Plan\n(Planner PL)"]
-    P --> A["03 Act\n(Workers WK)"]
-    A --> C["04 Check\n(Reviewer RV)"]
-    C -->|Flagged Issues| CR["05 Correct\n(Self-Correction Loop)"]
-    CR -->|Re-Audit| C
-    C -->|Approved (100%)| D["06 Deliver\n(Classroom Ready)"]
-```
-
----
 
 ##  Anti-Hallucination & Zero-Unverified-Sources Guarantee
 
