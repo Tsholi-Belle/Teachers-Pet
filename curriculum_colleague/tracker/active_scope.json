@@ -1,35 +1,142 @@
 {
-  "id": "custom_upload_1794574268",
-  "title": "Teacher Uploaded Annual Curriculum Scope",
-  "authority": "Teacher Custom Upload",
-  "grade": "Uploaded Grade",
-  "subject": "Uploaded Subject",
+  "id": "caps_ns_g7",
+  "title": "CAPS Natural Sciences Grade 7 Annual Teaching Plan",
+  "authority": "Department of Basic Education",
+  "grade": "Grade 7",
+  "subject": "Natural Sciences",
   "academic_year": "2026",
   "terms": {
     "Term 1": {
-      "name": "Curriculum Scope Term 1",
-      "weeks_count": 2,
+      "name": "Life and Living (Biosphere & Biodiversity)",
+      "weeks_count": 10,
       "weeks": [
         {
           "week": 1,
-          "id": "term_1_w1",
-          "topic": "Fractions Introduction",
+          "id": "t1_w1",
+          "topic": "The Biosphere",
           "objectives": [
-            "Identify numerator and denominator"
+            "Define the biosphere and its three components (lithosphere, hydrosphere, atmosphere).",
+            "Identify requirements for sustaining life on Earth."
           ],
-          "hours_allocated": 4.5,
+          "hours_allocated": 3.5,
           "completed": true,
+          "date_completed": "2026-01-22",
+          "notes": "Covered via 3-panel chalkboard diagram."
+        },
+        {
+          "week": 2,
+          "id": "t1_w2",
+          "topic": "Biodiversity and Classification",
+          "objectives": [
+            "Classify organisms into the five kingdoms.",
+            "Distinguish between vertebrates and invertebrates."
+          ],
+          "hours_allocated": 3.5,
+          "completed": true,
+          "date_completed": "2026-01-29",
+          "notes": "Learners completed paired classification exercise."
+        },
+        {
+          "week": 3,
+          "id": "t1_w3",
+          "topic": "Sexual Reproduction in Angiosperms",
+          "objectives": [
+            "Identify flower structures: sepals, petals, stamens, and pistil.",
+            "Describe the process of pollination and fertilization."
+          ],
+          "hours_allocated": 3.5,
+          "completed": true,
+          "date_completed": "2026-02-05",
+          "notes": "Live hibiscus flower observation."
+        },
+        {
+          "week": 4,
+          "id": "t1_w4",
+          "topic": "Photosynthesis and Food Production",
+          "objectives": [
+            "Explain the process of photosynthesis: chlorophyll, sunlight, CO2, water -> glucose + oxygen.",
+            "Identify oxygen as the by-product of photosynthesis.",
+            "Differentiate between photosynthesis and respiration."
+          ],
+          "hours_allocated": 3.5,
+          "completed": true,
+          "date_completed": "2026-02-12",
+          "notes": "Generated and verified with Teacher's Pet."
+        },
+        {
+          "week": 5,
+          "id": "t1_w5",
+          "topic": "Respiration in Living Organisms",
+          "objectives": [
+            "Explain cellular respiration as energy release from food.",
+            "Compare inhaled vs exhaled air composition."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
           "date_completed": null,
           "notes": ""
         },
         {
-          "week": 2,
-          "id": "term_1_w2",
-          "topic": "Equivalent Fractions",
+          "week": 6,
+          "id": "t1_w6",
+          "topic": "Ecosystems and Trophic Levels",
           "objectives": [
-            "Simplify fractions using LCD"
+            "Classify producers, primary, secondary, and tertiary consumers.",
+            "Explain decomposers and nutrient recycling."
           ],
-          "hours_allocated": 4.5,
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 7,
+          "id": "t1_w7",
+          "topic": "Food Chains and Food Webs",
+          "objectives": [
+            "Construct food chains showing correct arrow direction of energy flow.",
+            "Analyze impact of disruptions in food webs."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 8,
+          "id": "t1_w8",
+          "topic": "Adaptations and Survival",
+          "objectives": [
+            "Describe structural adaptations of plants (xerophytes, hydrophytes).",
+            "Describe camouflage and behavioral adaptations in animals."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 9,
+          "id": "t1_w9",
+          "topic": "Formal Assessment Preparation & Consolidation",
+          "objectives": [
+            "Revise Biosphere, Photosynthesis, Respiration, and Ecosystems.",
+            "Address common diagnostic misconception traps."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 10,
+          "id": "t1_w10",
+          "topic": "Term 1 Formal Assessment Task (FAT 1)",
+          "objectives": [
+            "Administer standardized Term 1 Test (Department moderated).",
+            "Record marks and compile diagnostic error analysis."
+          ],
+          "hours_allocated": 3.5,
           "completed": false,
           "date_completed": null,
           "notes": ""
@@ -37,17 +144,113 @@
       ]
     },
     "Term 2": {
-      "name": "Curriculum Scope Term 2",
-      "weeks_count": 1,
+      "name": "Matter and Materials",
+      "weeks_count": 10,
       "weeks": [
         {
           "week": 1,
-          "id": "term_2_w1",
-          "topic": "Geometry of 2D Shapes",
+          "id": "t2_w1",
+          "topic": "Properties of Materials",
           "objectives": [
-            "Classify triangles by sides and angles"
+            "Distinguish physical properties: strength, flexibility, thermal & electrical conductivity."
           ],
-          "hours_allocated": 4.5,
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 2,
+          "id": "t2_w2",
+          "topic": "Separating Mixtures",
+          "objectives": [
+            "Demonstrate methods of separating mixtures: filtration, evaporation, distillation, chromatography."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 3,
+          "id": "t2_w3",
+          "topic": "Acids, Bases, and Neutral Substances",
+          "objectives": [
+            "Identify properties of acids and bases using litmus paper indicators."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 4,
+          "id": "t2_w4",
+          "topic": "The Periodic Table of Elements",
+          "objectives": [
+            "Interpret symbols and atomic numbers for first 20 elements on the periodic table."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        }
+      ]
+    },
+    "Term 3": {
+      "name": "Energy and Change",
+      "weeks_count": 10,
+      "weeks": [
+        {
+          "week": 1,
+          "id": "t3_w1",
+          "topic": "Sources of Energy & Heat Transfer",
+          "objectives": [
+            "Explain conduction, convection, and radiation in everyday contexts."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 2,
+          "id": "t3_w2",
+          "topic": "Insulation and Energy Conservation",
+          "objectives": [
+            "Design an insulated solar cooker or thermos cup model using low-cost recycled materials."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        }
+      ]
+    },
+    "Term 4": {
+      "name": "Planet Earth and Beyond",
+      "weeks_count": 10,
+      "weeks": [
+        {
+          "week": 1,
+          "id": "t4_w1",
+          "topic": "Relationship of the Sun, Earth, and Moon",
+          "objectives": [
+            "Explain day/night cycles, seasons, and solar/lunar eclipses."
+          ],
+          "hours_allocated": 3.5,
+          "completed": false,
+          "date_completed": null,
+          "notes": ""
+        },
+        {
+          "week": 2,
+          "id": "t4_w2",
+          "topic": "Historical and Modern Astronomy",
+          "objectives": [
+            "Describe Indigenous knowledge of astronomy (e.g. Pleiades/IsiLimela) alongside modern telescopes (SALT)."
+          ],
+          "hours_allocated": 3.5,
           "completed": false,
           "date_completed": null,
           "notes": ""
