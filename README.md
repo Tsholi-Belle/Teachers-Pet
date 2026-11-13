@@ -9,7 +9,7 @@
 
 ---
 
-## 🎯 Grounded in the 5 Core Pillars
+##  Grounded in the 5 Core Pillars
 
 1. **Reasons**: Rather than reciting a rigid template, the **Planner Agent (`PL`)** dynamically evaluates the teacher's goal, class size constraints (45 learners), and time boundaries to construct an adaptive pedagogical workflow.
 2. **Self-Corrects**: The **Reviewer Agent (`RV`)** audits every draft through a 5-point verification engine. If any unverified source, hallucinated curriculum code, or unfeasible high-tech requirement is detected, work is automatically rejected and sent back to workers in the **05 Correct** stage for repair.
@@ -24,7 +24,7 @@
 
 ---
 
-## 🔄 The 6-Stage Autonomous Lifecycle
+##  The 6-Stage Autonomous Lifecycle
 
 ```mermaid
 flowchart LR
@@ -38,7 +38,7 @@ flowchart LR
 
 ---
 
-## 🛡️ Anti-Hallucination & Zero-Unverified-Sources Guarantee
+##  Anti-Hallucination & Zero-Unverified-Sources Guarantee
 
 Public school teachers face official departmental audits. Fictitious citations or inaccurate concepts damage learning. **Teacher's Pet** enforces:
 - **Verified Standard Anchoring**: Every outcome must match an authenticated national curriculum framework (e.g. CAPS Section 3 `NS-G7-T1-01`, NGSS `MS-LS1-6`).
@@ -47,7 +47,7 @@ Public school teachers face official departmental audits. Fictitious citations o
 
 ---
 
-## 🎒 Purpose-Built for Public Schools with 40+ Kids
+##  Purpose-Built for Public Schools with 40+ Kids
 
 - **Paper-Saver Format**: Formatted for 2-up A5 half-sheets (1 sheet per pair = only 23 photocopies for 45 kids) or direct chalkboard copying.
 - **High-Density Seating Protocols**: Uses "Shoulder Partners" (pairs) and "Pods of 4" (turning front desks around) without moving furniture.
@@ -56,7 +56,7 @@ Public school teachers face official departmental audits. Fictitious citations o
 
 ---
 
-## 📅 Annual Scope Uploader & Curriculum Accountability Tracker
+##  Annual Scope Uploader & Curriculum Accountability Tracker
 
 Public school educators face relentless pressure from departmental audits to complete the syllabus on time despite classroom disruptions, sports days, and high student counts. **Teacher's Pet** integrates an end-to-end Curriculum Scope & Accountability Tracker:
 
@@ -75,7 +75,7 @@ Public school educators face relentless pressure from departmental audits to com
 
 ---
 
-## 📊 Pitch Deck & Product Vision
+##  Pitch Deck & Product Vision
 
 Explore the complete pitch deck detailing the problem statement, solution, and why teachers need this agent:
 - 📑 **[Pitch Deck Document (Markdown)](docs/pitch_deck.md)**
@@ -83,7 +83,7 @@ Explore the complete pitch deck detailing the problem statement, solution, and w
 
 ---
 
-## 🚀 Quickstart Guide
+##  Quickstart Guide
 
 ### 1. Web Dashboard (Interactive UI)
 Run the local server:
@@ -113,7 +113,7 @@ python3 tests/test_tracker.py
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 Teachers-Pet/
@@ -144,5 +144,5 @@ Teachers-Pet/
 
 ---
 
-## 📜 License
+##  License
 MIT License. Built for educators everywhere.
