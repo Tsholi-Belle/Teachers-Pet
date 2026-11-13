@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <td class="timeline-phase">${escapeHtml(t.phase)}</td>
         <td class="timeline-time">${escapeHtml(t.time)}</td>
         <td><strong>Teacher:</strong> ${escapeHtml(t.teacher_action)}<br>
-            <span style="color: #94a3b8"><strong>Learners (40+):</strong> ${escapeHtml(t.learner_action)}</span>
+            <span style="color: #94a3b8"><strong>Learners:</strong> ${escapeHtml(t.learner_action)}</span>
         </td>
       </tr>
     `).join("");
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="callout-box">
-          <strong>Public School Classroom Adaptation (40+ Kids):</strong><br>
+          <strong>Public School Classroom Adaptation:</strong><br>
           • <strong>Seating:</strong> ${escapeHtml(plan.classroom_logistics.seating_arrangement)}<br>
           • <strong>Attention Cue:</strong> ${escapeHtml(plan.classroom_logistics.noise_and_attention_cues)}<br>
           • <strong>Rapid Feedback:</strong> ${escapeHtml(plan.classroom_logistics.rapid_formative_checks_for_large_group)}
@@ -373,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="check-item">
             <span class="pacing-badge ${checks.crowded_class_40plus ? 'on-track' : 'critical'}">${checks.crowded_class_40plus ? "PASS" : "FAIL"}</span>
             <div>
-              <strong>40+ Learner Public School Feasibility:</strong>
+              <strong>Public School Feasibility:</strong>
               <span style="color: #94a3b8">Enforces zero-cost supplies, pair-work, chalkboard layouts, and paper-saving formats.</span>
             </div>
           </div>
