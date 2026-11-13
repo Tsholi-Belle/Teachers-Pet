@@ -1,0 +1,187 @@
+{
+  "curricula": {
+    "CAPS": {
+      "name": "Curriculum and Assessment Policy Statement (CAPS - National Dept of Education)",
+      "authority": "Department of Basic Education",
+      "verified_date": "2024-01-15",
+      "subjects": {
+        "Natural Sciences": {
+          "Grade 7": [
+            {
+              "code": "NS-G7-T1-01",
+              "topic": "Photosynthesis and Respiration",
+              "subtopic": "Plants and Food Production",
+              "outcomes": [
+                "Explain the process of photosynthesis: plants manufacture glucose using chlorophyll, sunlight, carbon dioxide, and water.",
+                "Identify oxygen as the by-product of photosynthesis.",
+                "Differentiate between photosynthesis (energy storage) and respiration (energy release in plants and animals)."
+              ],
+              "key_concepts": [
+                "Chlorophyll",
+                "Glucose",
+                "Carbon dioxide",
+                "Sunlight radiant energy",
+                "Stomata",
+                "Oxygen by-product"
+              ],
+              "verified_sources": [
+                "DBE CAPS Natural Sciences Senior Phase Grades 7-9 Document Section 3.1",
+                "Sasol Inzalo Natural Sciences Grade 7 Learner Book (DBE Approved)",
+                "Siyavula Natural Sciences Grade 7 Open Resource"
+              ],
+              "common_misconceptions": [
+                "Confusing plant respiration with breathing",
+                "Thinking plants only perform photosynthesis and not respiration",
+                "Believing soil provides the food for plants rather than sunlight/water/CO2"
+              ]
+            },
+            {
+              "code": "NS-G7-T1-02",
+              "topic": "Ecosystems and Food Chains",
+              "subtopic": "Trophic Levels and Energy Flow",
+              "outcomes": [
+                "Classify organisms into producers, primary consumers, secondary consumers, and decomposers.",
+                "Construct and interpret food chains and food webs showing direction of energy flow with arrows.",
+                "Analyze the impact of removing or adding a species to an ecosystem."
+              ],
+              "key_concepts": [
+                "Producers (Autotrophs)",
+                "Herbivores",
+                "Carnivores",
+                "Omnivores",
+                "Decomposers",
+                "Trophic Level",
+                "Energy Transfer (10% Rule)"
+              ],
+              "verified_sources": [
+                "DBE CAPS Natural Sciences Senior Phase Grades 7-9 Section 3.2",
+                "Sasol Inzalo Natural Sciences Grade 7 Chapter 2"
+              ],
+              "common_misconceptions": [
+                "Drawing food chain arrows towards the animal that was eaten rather than towards the consumer",
+                "Thinking top predators have unlimited energy"
+              ]
+            }
+          ],
+          "Grade 8": [
+            {
+              "code": "NS-G8-T2-01",
+              "topic": "Matter and Materials",
+              "subtopic": "Atoms and Periodic Table",
+              "outcomes": [
+                "Identify subatomic particles: protons, neutrons, and electrons and their charges.",
+                "Interpret the first 20 elements on the Periodic Table with atomic number and chemical symbol.",
+                "Distinguish between pure substances (elements, compounds) and mixtures."
+              ],
+              "key_concepts": ["Atom", "Proton", "Neutron", "Electron", "Atomic Number", "Periodic Table", "Compound"],
+              "verified_sources": [
+                "DBE CAPS Natural Sciences Senior Phase Grade 8 Section 3.3",
+                "Siyavula Gr 8 Natural Sciences"
+              ],
+              "common_misconceptions": [
+                "Thinking electrons are inside the nucleus",
+                "Confusing atomic mass with atomic number"
+              ]
+            }
+          ]
+        },
+        "Mathematics": {
+          "Grade 7": [
+            {
+              "code": "MATH-G7-T1-01",
+              "topic": "Common Fractions",
+              "subtopic": "Addition, Subtraction, and Equivalents",
+              "outcomes": [
+                "Find equivalent fractions using lowest common denominator (LCD).",
+                "Add and subtract common fractions and mixed numbers with unlike denominators.",
+                "Solve realistic contextual word problems involving fractions."
+              ],
+              "key_concepts": ["Numerator", "Denominator", "Equivalent Fraction", "Lowest Common Denominator", "Mixed Number", "Improper Fraction"],
+              "verified_sources": [
+                "DBE CAPS Mathematics Senior Phase Grades 7-9 Section 3.1.2",
+                "Sasol Inzalo Mathematics Grade 7 Learner Book"
+              ],
+              "common_misconceptions": [
+                "Adding both numerators and denominators together (e.g. 1/2 + 1/3 = 2/5)",
+                "Forgetting to convert mixed numbers before subtraction"
+              ]
+            }
+          ],
+          "Grade 8": [
+            {
+              "code": "MATH-G8-T2-01",
+              "topic": "Algebraic Expressions",
+              "subtopic": "Simplifying and Combining Like Terms",
+              "outcomes": [
+                "Distinguish between variables, constants, coefficients, and terms.",
+                "Combine like terms in polynomial expressions through addition and subtraction.",
+                "Substitute integers into algebraic expressions to evaluate numerical value."
+              ],
+              "key_concepts": ["Variable", "Constant", "Coefficient", "Like Terms", "Exponent", "Substitution"],
+              "verified_sources": [
+                "DBE CAPS Mathematics Grade 8 Section 2.2",
+                "Sasol Inzalo Mathematics Grade 8 Chapter 4"
+              ],
+              "common_misconceptions": [
+                "Combining unlike terms (e.g. 3x + 2 = 5x)",
+                "Dropping negative signs when distributing"
+              ]
+            }
+          ]
+        },
+        "English First Additional Language": {
+          "Grade 7": [
+            {
+              "code": "EFAL-G7-T2-01",
+              "topic": "Language Structures and Conventions",
+              "subtopic": "Direct and Reported (Indirect) Speech",
+              "outcomes": [
+                "Identify quotation marks, speaker tags, and punctuation in direct speech.",
+                "Convert simple sentences from direct speech to reported speech shifting tense and pronouns.",
+                "Use reporting verbs accurately (said, asked, warned, explained)."
+              ],
+              "key_concepts": ["Direct Speech", "Reported Speech", "Tense Shift", "Pronoun Shift", "Quotation Marks"],
+              "verified_sources": [
+                "DBE CAPS EFAL Grades 7-9 Section 3.4",
+                "Oxford Successful English Grade 7"
+              ],
+              "common_misconceptions": [
+                "Retaining quotation marks in reported speech",
+                "Failing to shift present tense 'is/are' to past tense 'was/were'"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "NGSS_CommonCore": {
+      "name": "Next Generation Science Standards (NGSS) & Common Core",
+      "authority": "National Research Council / Achieve Inc.",
+      "verified_date": "2024-02-10",
+      "subjects": {
+        "Life Science": {
+          "Middle School": [
+            {
+              "code": "MS-LS1-6",
+              "topic": "From Molecules to Organisms",
+              "subtopic": "Photosynthesis and Energy Chemical Reaction",
+              "outcomes": [
+                "Construct a scientific explanation based on evidence for the role of photosynthesis in cycling matter and flow of energy.",
+                "Demonstrate that light energy converts water and carbon dioxide into oxygen and carbohydrates."
+              ],
+              "key_concepts": ["Light energy", "Carbon dioxide", "Chemical reaction", "Sugar / Carbohydrate", "Biomass"],
+              "verified_sources": [
+                "NGSS Middle School Life Science Standards MS-LS1-6",
+                "OpenSciEd Unit 7.4 Matter Cycling and Photosynthesis"
+              ],
+              "common_misconceptions": [
+                "Matter disappears during metabolic reactions",
+                "Sunlight is a chemical reactant rather than radiant energy driver"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

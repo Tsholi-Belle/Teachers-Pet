@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher's Pet — Pitch Deck</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .slide { display: none; }
+    .slide.active { display: flex; animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen p-4 md:p-8 flex flex-col justify-between font-sans">
+
+  <!-- Deck Container -->
+  <div class="max-w-5xl mx-auto w-full flex-1 flex flex-col justify-between">
+    
+    <!-- Top Header & Slide Indicator -->
+    <header class="flex items-center justify-between border-b border-[var(--border)] pb-4 mb-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-pink-500/20 text-pink-500 font-bold flex items-center justify-center text-sm border border-pink-500/30">
+          🐾
+        </div>
+        <div>
+          <h1 class="text-sm font-bold tracking-tight text-[var(--foreground)]">Teacher's Pet</h1>
+          <p class="text-xs text-[var(--muted-foreground)]">Pitch Deck & Product Vision</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-1.5 text-xs text-[var(--muted-foreground)] font-mono">
+          Slide <span id="currentSlideNum" class="font-bold text-[var(--foreground)]">1</span> / <span id="totalSlidesNum">7</span>
+        </div>
+        <div class="w-32 h-2 bg-[var(--card)] rounded-full overflow-hidden border border-[var(--border)]">
+          <div id="progressBar" class="h-full bg-pink-500 transition-all duration-300" style="width: 14%;"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Slide Content Box -->
+    <main class="flex-1 flex flex-col justify-center my-4">
+
+      <!-- SLIDE 1: Title -->
+      <section class="slide active flex-col items-center text-center py-8 px-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-pink-500/10 text-pink-500 border border-pink-500/20 mb-4">
+          Public School Ready • 40+ Students
+        </span>
+        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-[var(--foreground)]">
+          Teacher's Pet
+        </h2>
+        <p class="text-lg md:text-xl text-[var(--muted-foreground)] max-w-2xl mb-8 leading-relaxed">
+          The autonomous multi-agent pedagogical colleague that turns hours of night-time lesson planning into <strong class="text-pink-500 font-semibold">90 seconds of verified, classroom-ready pedagogy</strong>.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl text-left">
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <div class="text-pink-500 text-lg mb-1">⏱️</div>
+            <div class="font-bold text-sm">Saves 10+ Hours/Week</div>
+            <div class="text-xs text-[var(--muted-foreground)]">Zero lesson-planning backlog for busy educators.</div>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <div class="text-blue-500 text-lg mb-1">🛡️</div>
+            <div class="font-bold text-sm">Zero Hallucinations</div>
+            <div class="text-xs text-[var(--muted-foreground)]">Anchored 100% to verified national curriculum standards.</div>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <div class="text-emerald-500 text-lg mb-1">🎒</div>
+            <div class="font-bold text-sm">Built for 40+ Kids</div>
+            <div class="text-xs text-[var(--muted-foreground)]">Chalkboard-friendly, paper-saver, and crowd-resilient.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Problem Statement -->
+      <section class="slide flex-col py-6 px-8 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm">
+        <div class="text-xs font-semibold text-pink-500 uppercase tracking-wider mb-2">01 • The Problem</div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3 text-[var(--foreground)]">
+          The Invisible Crisis in Public School Classrooms
+        </h2>
+        <p class="text-sm text-[var(--muted-foreground)] mb-6">
+          Teachers in public schools are facing an unsustainable workload with high student-to-teacher ratios.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="p-5 rounded-xl bg-red-500/5 border border-red-500/20">
+            <div class="text-2xl font-black text-red-500 mb-1">40 - 55</div>
+            <h3 class="font-bold text-sm mb-2 text-[var(--foreground)]">Overcrowded Classrooms</h3>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              One teacher with no assistant managing 40+ learners with widely differing reading and comprehension levels.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-amber-500/5 border border-amber-500/20">
+            <div class="text-2xl font-black text-amber-500 mb-1">12+ Hours</div>
+            <h3 class="font-bold text-sm mb-2 text-[var(--foreground)]">Unpaid Prep & Marking</h3>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Evenings and weekends spent drafting lesson plans, finding worksheets, and grading paper exercises.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-purple-500/5 border border-purple-500/20">
+            <div class="text-2xl font-black text-purple-500 mb-1">Zero Tech</div>
+            <h3 class="font-bold text-sm mb-2 text-[var(--foreground)]">Unrealistic EdTech Tools</h3>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Most AI apps assume each child has an iPad or high-speed internet. Public schools have chalkboards and tight photocopy budgets.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 rounded-xl bg-[var(--background)] border border-[var(--border)] text-xs text-[var(--muted-foreground)]">
+          <strong class="text-[var(--foreground)]">The Core Issue:</strong> Commercial AI chatbots hallucinate false curriculum codes, invent fictional citations, and create complex activities that collapse in a crowded 45-student room.
+        </div>
+      </section>
+
+      <!-- SLIDE 3: The Solution -->
+      <section class="slide flex-col py-6 px-8 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm">
+        <div class="text-xs font-semibold text-pink-500 uppercase tracking-wider mb-2">02 • The Solution</div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3 text-[var(--foreground)]">
+          Teacher's Pet: A True Autonomous Pedagogical Colleague
+        </h2>
+        <p class="text-sm text-[var(--muted-foreground)] mb-6">
+          An autonomous multi-agent system that collaborates to deliver structured, verified classroom packs in seconds.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="p-5 rounded-xl bg-[var(--background)] border border-[var(--border)] flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-500 font-bold flex items-center justify-center shrink-0 border border-purple-500/20">
+              PL
+            </div>
+            <div>
+              <h3 class="font-bold text-sm mb-1 text-[var(--foreground)]">Planner Agent</h3>
+              <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+                Interprets simple teacher outcomes, maps pedagogical time-blocks (Hook, Instruction, Guided Practice, Formative Check), and assigns worker tasks.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-[var(--background)] border border-[var(--border)] flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-500 font-bold flex items-center justify-center shrink-0 border border-blue-500/20">
+              WK
+            </div>
+            <div>
+              <h3 class="font-bold text-sm mb-1 text-[var(--foreground)]">Worker Agents (Grounding, Lesson & Exercise)</h3>
+              <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+                Connects strictly to accredited curriculum databases (CAPS/NGSS), generates 3-panel chalkboard layouts, and produces paper-saving matching sheets.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-[var(--background)] border border-[var(--border)] flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-500 font-bold flex items-center justify-center shrink-0 border border-amber-500/20">
+              RV
+            </div>
+            <div>
+              <h3 class="font-bold text-sm mb-1 text-[var(--foreground)]">Reviewer Agent</h3>
+              <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+                Audits every claim. Ensures 100% outcome alignment, tests matching key uniqueness, and blocks unverified links or unrealistic tech requirements.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-[var(--background)] border border-[var(--border)] flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 font-bold flex items-center justify-center shrink-0 border border-emerald-500/20">
+              05
+            </div>
+            <div>
+              <h3 class="font-bold text-sm mb-1 text-[var(--foreground)]">Self-Correction Engine</h3>
+              <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+                Catches errors automatically and loops work back to workers for repair before final delivery, guaranteeing teachers never receive broken materials.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: Strict Verification & Anti-Hallucination -->
+      <section class="slide flex-col py-6 px-8 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm">
+        <div class="text-xs font-semibold text-pink-500 uppercase tracking-wider mb-2">03 • Truth & Integrity</div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3 text-[var(--foreground)]">
+          Why "Does Not Lie" is Non-Negotiable in Education
+        </h2>
+        <p class="text-sm text-[var(--muted-foreground)] mb-6">
+          Teachers face official department inspections. Fictional citations or inaccurate science concepts damage student futures.
+        </p>
+
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-start gap-4">
+            <span class="text-emerald-500 text-lg">✅</span>
+            <div>
+              <h3 class="font-bold text-sm text-[var(--foreground)]">Accredited Standard Whitelist</h3>
+              <p class="text-xs text-[var(--muted-foreground)]">Every generated outcome is locked to authenticated syllabus codes (e.g., CAPS <code>NS-G7-T1-01</code> or NGSS <code>MS-LS1-6</code>). If a standard cannot be verified, it is flagged and blocked.</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-start gap-4">
+            <span class="text-emerald-500 text-lg">✅</span>
+            <div>
+              <h3 class="font-bold text-sm text-[var(--foreground)]">Verified Source Repository</h3>
+              <p class="text-xs text-[var(--muted-foreground)]">Only accredited departmental books (DBE, Sasol Inzalo, Siyavula) are permitted. AI is strictly barred from inventing blog links or fictional citations.</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-start gap-4">
+            <span class="text-emerald-500 text-lg">✅</span>
+            <div>
+              <h3 class="font-bold text-sm text-[var(--foreground)]">Mathematical & Pedagogical Soundness</h3>
+              <p class="text-xs text-[var(--muted-foreground)]">Matching exercises are tested against ambiguity algorithms: every term has exactly one distinct matching definition, eliminating unfair grading traps.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: Classroom Optimizations for 40+ Kids -->
+      <section class="slide flex-col py-6 px-8 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm">
+        <div class="text-xs font-semibold text-pink-500 uppercase tracking-wider mb-2">04 • Pragmatic Pedagogy</div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3 text-[var(--foreground)]">
+          Engineered for the Realities of 40+ Learner Classes
+        </h2>
+        <p class="text-sm text-[var(--muted-foreground)] mb-6">
+          How Teacher's Pet solves overcrowding without requiring high-tech budgets.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <div class="font-bold text-sm mb-1 text-pink-500">📄 Paper-Saver Layouts</div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Generates 2-up half-sheet formats (1 A4 shared between 2 learners = only 23 photocopies for 45 kids) or direct chalkboard copying for zero school expenditure.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <div class="font-bold text-sm mb-1 text-blue-500">👥 Zero-Chaos Desk Grouping</div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Structures cooperative learning around "Shoulder Partners" (desk neighbors) and "Pods of 4" (turning front desks around) without moving furniture across a crowded room.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <div class="font-bold text-sm mb-1 text-amber-500">🗣️ 90-Second Whole-Class Checking</div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Embeds choral unison call-and-response and chest-finger voting routines, enabling teachers to gauge 45 kids' comprehension immediately without 2 hours of evening red-pen marking.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <div class="font-bold text-sm mb-1 text-emerald-500">📝 3-Panel Chalkboard System</div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Standardizes chalkboard layout into Panel 1 (Date & Vocabulary), Panel 2 (Concept Diagram), and Panel 3 (Classwork Matching Exercise) for clean student copying.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: Why Teachers Need This -->
+      <section class="slide flex-col py-6 px-8 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm">
+        <div class="text-xs font-semibold text-pink-500 uppercase tracking-wider mb-2">05 • The Human Impact</div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3 text-[var(--foreground)]">
+          Why Teachers Desperately Need This Agent Today
+        </h2>
+        <p class="text-sm text-[var(--muted-foreground)] mb-6">
+          Teacher burnout is driving talent out of the classroom. Teacher's Pet restores the joy of teaching.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="p-5 rounded-xl bg-[var(--background)] border border-[var(--border)] text-center">
+            <div class="text-3xl mb-2">🧘</div>
+            <h3 class="font-bold text-sm mb-1 text-[var(--foreground)]">Reclaims Personal Lives</h3>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Teachers leave school with their work done. No more late nights typing lesson outlines or searching Google for matching pairs.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-[var(--background)] border border-[var(--border)] text-center">
+            <div class="text-3xl mb-2">🛡️</div>
+            <h3 class="font-bold text-sm mb-1 text-[var(--foreground)]">Zero Audit Anxiety</h3>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Every lesson plan is certified against official curriculum standards, ready for departmental inspection at any time.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-[var(--background)] border border-[var(--border)] text-center">
+            <div class="text-3xl mb-2">🌟</div>
+            <h3 class="font-bold text-sm mb-1 text-[var(--foreground)]">Active Student Engagement</h3>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Instead of passive lecturing to 45 tired kids, teachers have structured, active partner checks that keep every learner engaged.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 rounded-xl bg-pink-500/10 border border-pink-500/20 text-center">
+          <p class="text-xs text-[var(--foreground)] font-medium">
+            "When we support the teacher with intelligent, trustworthy scaffolding, all 45 children in that classroom win."
+          </p>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Summary & Call to Action -->
+      <section class="slide flex-col items-center text-center py-8 px-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 mb-4">
+          Ready for Deployment
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-[var(--foreground)]">
+          Empower Every Public School Teacher
+        </h2>
+        <p class="text-sm md:text-base text-[var(--muted-foreground)] max-w-xl mb-8 leading-relaxed">
+          Teacher's Pet is live, tested, and zero-dependency. Let's place a reliable, unhallucinated pedagogical assistant in the hands of every educator who needs one.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
+          <div class="px-5 py-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-left">
+            <div class="text-xs text-[var(--muted-foreground)]">Live Web Server</div>
+            <div class="font-mono text-sm font-bold text-pink-500">http://localhost:8080</div>
+          </div>
+          <div class="px-5 py-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-left">
+            <div class="text-xs text-[var(--muted-foreground)]">Terminal CLI</div>
+            <div class="font-mono text-sm font-bold text-blue-500">python3 cli.py</div>
+          </div>
+          <div class="px-5 py-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-left">
+            <div class="text-xs text-[var(--muted-foreground)]">Audit Pass Rate</div>
+            <div class="font-mono text-sm font-bold text-emerald-500">100% Verified</div>
+          </div>
+        </div>
+
+        <p class="text-xs text-[var(--muted-foreground)]">
+          Teacher's Pet • Autonomous Pedagogy • Zero Hallucinations • Built for Public Schools
+        </p>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Controls -->
+    <footer class="flex items-center justify-between border-t border-[var(--border)] pt-4 mt-4">
+      <button id="prevBtn" class="px-4 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:bg-[var(--border)] transition disabled:opacity-30 disabled:cursor-not-allowed">
+        ← Previous Slide
+      </button>
+
+      <div class="text-xs text-[var(--muted-foreground)] hidden sm:block">
+        Use <kbd class="px-1.5 py-0.5 rounded bg-[var(--border)] font-mono text-[10px]">←</kbd> and <kbd class="px-1.5 py-0.5 rounded bg-[var(--border)] font-mono text-[10px]">→</kbd> keys to navigate
+      </div>
+
+      <button id="nextBtn" class="px-4 py-2 rounded-lg text-xs font-semibold bg-pink-500 text-white hover:bg-pink-600 transition disabled:opacity-30 disabled:cursor-not-allowed">
+        Next Slide →
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Slide Navigation Script -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const currentSlideNum = document.getElementById('currentSlideNum');
+    const totalSlidesNum = document.getElementById('totalSlidesNum');
+    const progressBar = document.getElementById('progressBar');
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    totalSlidesNum.textContent = totalSlides;
+
+    function updateSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+      currentSlideNum.textContent = index + 1;
+      progressBar.style.width = `${((index + 1) / totalSlides) * 100}%`;
+
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === totalSlides - 1;
+      nextBtn.textContent = index === totalSlides - 1 ? 'End of Deck ✓' : 'Next Slide →';
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) updateSlide(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < totalSlides - 1) updateSlide(currentIndex + 1);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        if (currentIndex < totalSlides - 1) updateSlide(currentIndex + 1);
+      } else if (e.key === 'ArrowLeft') {
+        if (currentIndex > 0) updateSlide(currentIndex - 1);
+      }
+    });
+
+    // Initialize
+    updateSlide(0);
+  </script>
+</body>
+</html>

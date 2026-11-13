@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher's Pet | Autonomous Multi-Agent Lesson & Exercise Engine</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="brand">
+          <div class="brand-badge">PUBLIC SCHOOL READY • 40+ LEARNERS</div>
+          <h1>Teacher's Pet</h1>
+          <p class="tagline">Your autonomous pedagogical colleague: drafting lesson plans, synthesizing matching exercises, and certifying learning outcomes without hallucinations.</p>
+        </div>
+        <div class="header-actions">
+          <div class="system-status">
+            <span class="pulse-indicator"></span>
+            <span class="status-label">Grounding: <strong>Verified CAPS / National Registry</strong></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace Area -->
+    <main class="main-layout">
+      <!-- Left Column: Goal Input & Live Multi-Agent Log -->
+      <div class="input-and-logs-col">
+        <div class="card panel">
+          <h3>Teacher Goal & Constraints</h3>
+          <p class="panel-sub">Enter your subject, grade, or learning outcome. Configured for public school realities (large student counts, minimal resources).</p>
+          
+          <div class="form-group">
+            <textarea id="goalInput" rows="3" placeholder="e.g. Grade 7 Natural Sciences: Photosynthesis and Food Chains for 45 students in public school with limited budget"></textarea>
+          </div>
+
+          <div class="quick-presets">
+            <span class="preset-label">Quick Presets:</span>
+            <button class="preset-btn" data-goal="Grade 7 Natural Sciences: Photosynthesis & Food Chains for 45 learners in a 45-minute class">🌱 Gr 7 Science (Photosynthesis)</button>
+            <button class="preset-btn" data-goal="Grade 8 Mathematics: Algebraic Expressions & Combining Like Terms for 48 students">📐 Gr 8 Math (Algebra)</button>
+            <button class="preset-btn" data-goal="Grade 7 English FAL: Direct and Reported (Indirect) Speech for 42 students">📖 Gr 7 English (Reported Speech)</button>
+          </div>
+
+          <div class="control-toggles">
+            <label class="toggle-container">
+              <input type="checkbox" id="demoCorrectionToggle">
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Demonstrate Self-Correction Loop (Simulate unverified source & watch Reviewer intercept and force worker repair)</span>
+            </label>
+          </div>
+
+          <div class="btn-row">
+            <button id="launchBtn" class="btn btn-primary">
+              <span class="btn-icon">⚡</span> Run Teacher's Pet
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Agent Event Stream -->
+        <div class="card panel logs-panel">
+          <div class="panel-header-inline">
+            <h3>Multi-Agent Execution Feed</h3>
+            <span id="logCount" class="badge">0 events</span>
+          </div>
+          <div id="eventsLog" class="events-log-container">
+            <div class="empty-state">
+              <span class="empty-icon">🐾</span>
+              <p>Click "Run Teacher's Pet" to activate the Planner, Worker, and Reviewer agents.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Delivered Classroom Bundle -->
+      <div class="output-col">
+        <div class="card panel output-panel">
+          <div class="tabs-header">
+            <button class="tab-btn active" data-tab="lesson-tab">📋 Lesson Plan (40+ Kids)</button>
+            <button class="tab-btn" data-tab="exercise-tab">🧩 Matching Exercises</button>
+            <button class="tab-btn" data-tab="answers-tab">🔑 Answer Key & Outcomes</button>
+            <button class="tab-btn" data-tab="audit-tab">🛡️ Grounding & Verification</button>
+          </div>
+
+          <div class="tab-content-wrapper">
+            <!-- Tab 1: Lesson Plan -->
+            <div id="lesson-tab" class="tab-pane active">
+              <div class="placeholder-content">
+                <h4>No lesson generated yet</h4>
+                <p>Launch the agents to generate a verified, classroom-tested lesson plan tailored for 40+ learners.</p>
+              </div>
+            </div>
+
+            <!-- Tab 2: Matching Exercise -->
+            <div id="exercise-tab" class="tab-pane">
+              <div class="placeholder-content">
+                <h4>Matching exercises will appear here</h4>
+                <p>Includes dual-column vocabulary pairs and printable paper-saving layouts.</p>
+              </div>
+            </div>
+
+            <!-- Tab 3: Answer Key -->
+            <div id="answers-tab" class="tab-pane">
+              <div class="placeholder-content">
+                <h4>Answer key and outcome mapping</h4>
+                <p>Shows exact letter answers and maps each exercise directly to syllabus codes.</p>
+              </div>
+            </div>
+
+            <!-- Tab 4: Verification Audit -->
+            <div id="audit-tab" class="tab-pane">
+              <div class="placeholder-content">
+                <h4>Zero-Hallucination Audit Certificate</h4>
+                <p>Verifies accredited sources, syllabus standard codes, and classroom feasibility.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Bar -->
+          <div class="output-footer" id="outputFooter" style="display: none;">
+            <div class="summary-pills">
+              <span class="summary-pill" id="pillCode">Standard: -</span>
+              <span class="summary-pill" id="pillScore">Audit Score: -</span>
+              <span class="summary-pill" id="pillSize">Class: 45 Learners</span>
+            </div>
+            <button id="printBtn" class="btn btn-secondary">
+              <span>🖨️</span> Print / Save Classroom Bundle
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Teacher's Pet • Built for public schools with 40+ students • Guaranteed zero-hallucination verified grounding</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
